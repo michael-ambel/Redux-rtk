@@ -27,4 +27,5 @@ module.exports = {
         open: true,   // Automatically open the browser
         hot: true,    // Enable Hot Module Replacement (HMR) for live reloading
       },
+      devtool: 'source-map'
   };
