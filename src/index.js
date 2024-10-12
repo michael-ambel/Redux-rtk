@@ -1,22 +1,50 @@
 import store from "./store/configStore";
-import { addActions, removeActions, completedAction, fetchTodo } from "./store/tasks";
-
-const unsubscribe = store.subscribe(()=>{
-    console.log('Update: ', store.getState());
-})
-store.dispatch(addActions('first task'))
-
-store.dispatch(completedAction(1))
-
-store.dispatch(removeActions(1))
-
-store.dispatch(fetchTodo())
+import { addNewTask, loadTask, completUpdater, taskDeleter } from "./store/tasks";
 
 
 
 
- 
+store.dispatch(loadTask())
+store.dispatch(addNewTask({task:'Custom API with RT'}))
+store.dispatch(completUpdater({id:5 , completed: true}))
+store.dispatch(taskDeleter({id: 3}))
 
+
+
+
+
+
+
+
+
+// async by createAsyncThunk
+
+// store.dispatch(fetchTasks())
+
+
+// async by normal function metchod
+// const getResponse = async () => {
+
+//     const res = await axios.get('http://localhost:3000/api/tasks')
+//     console.log(res);
+
+//     store.dispatch(getTask({tasks: res.data}))
+// }
+
+// getResponse()
+
+// const unsubscribe = store.subscribe(()=>{
+//     console.log('Update: ', store.getState());
+// })
+
+// //task dispach
+// store.dispatch(addTask({task: 'first task'}))
+// store.dispatch(addTask({task: 'second task'}))
+// store.dispatch(taskCompleted({id: 1}))
+// store.dispatch(removeTask({id: 2}))
+
+// //employee dispach
+// store.dispatch(addEmp({name: 'Nino'}))
 
 
 
@@ -37,3 +65,5 @@ store.dispatch(fetchTodo())
 // const newArrayOfBooks = arrayOfBooks.map(b=> b==='Book2'? 'Book4': b)
 // console.log(arrayOfBooks);
 // console.log(newArrayOfBooks);
+
+
